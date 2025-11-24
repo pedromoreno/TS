@@ -224,7 +224,15 @@ document.addEventListener('DOMContentLoaded', () => {
             'assets/gallery/eventos/L1010987-f0da9d7e-1000.jpg',
             'assets/gallery/eventos/L1011010-a3a8599d-1000.jpg',
             'assets/gallery/eventos/L1011029-c3bd1a48-1000.jpg',
-            'assets/gallery/eventos/L1011133-70730656-1000.jpg'
+            'assets/gallery/eventos/L1011133-70730656-1000.jpg',
+            'assets/gallery/eventos/IMG_3903.jpg',
+            'assets/gallery/eventos/IMG_3956.jpg',
+            'assets/gallery/eventos/IMG_3957.jpg',
+            'assets/gallery/eventos/IMG_3975.jpg',
+            'assets/gallery/eventos/IMG_4044.jpg',
+            'assets/gallery/eventos/IMG_8128.jpg',
+            'assets/gallery/eventos/IMG_8137.jpg',
+            'assets/gallery/eventos/IMG_8231.jpg'
         ],
         casual: [
             'assets/gallery/casual/DSCF3750-ca8e0bb9-1000.jpg',
@@ -238,7 +246,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'assets/gallery/casual/L1010177-983bd04c-1000.jpg',
             'assets/gallery/casual/L1010202-6a8c52bf-1000.jpg',
             'assets/gallery/casual/L1010206-3d0966dd-1000.jpg',
-            'assets/gallery/casual/L1010213-cfbee42e-1000.jpg'
+            'assets/gallery/casual/L1010213-cfbee42e-1000.jpg',
+            'assets/gallery/casual/IMG_8042.jpg',
+            'assets/gallery/casual/IMG_9676.jpg'
         ],
         callejera: [
             'assets/gallery/callejera/tumblr_b8a53fc2a9045b94e8578611b0428299_37ec70c5_1280-5f4db867-1000.jpg',
