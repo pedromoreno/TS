@@ -1,4 +1,109 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Matrix FX Canvas Animation
+    const canvas = document.getElementById('matrix-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let dots = [];
+        let animationId;
+
+        const resizeCanvas = () => {
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            initDots();
+        };
+
+        const initDots = () => {
+            dots = [];
+            const dotSize = 2;
+            const spacing = 25;
+            const cols = Math.ceil(canvas.width / spacing);
+            const rows = Math.ceil(canvas.height / spacing);
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    const x = col * spacing + spacing / 2;
+                    const y = row * spacing + spacing / 2;
+                    const dx = x - centerX;
+                    const dy = y - centerY;
+                    const distanceFromCenter = Math.sqrt(dx * dx + dy * dy);
+
+                    dots.push({
+                        x,
+                        y,
+                        size: dotSize,
+                        baseOpacity: 0.2 + Math.random() * 0.3,
+                        distanceFromCenter,
+                        flickerPhase: Math.random() * Math.PI * 2,
+                        flickerSpeed: 0.8 + Math.random() * 0.4
+                    });
+                }
+            }
+        };
+
+        const drawDots = (time) => {
+            // Get background color from CSS variable
+            const bgColor = getComputedStyle(document.documentElement)
+                .getPropertyValue('--bg-primary').trim() || '#050505';
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const waveSpeed = 0.0008;
+            const waveProgress = (time * waveSpeed) % 1;
+            const maxRadius = Math.sqrt(canvas.width * canvas.width + canvas.height * canvas.height);
+            const waveRadius = waveProgress * maxRadius * 1.5;
+            const waveWidth = maxRadius * 0.15;
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+
+            // Get accent color from CSS variable
+            const accentColor = getComputedStyle(document.documentElement)
+                .getPropertyValue('--accent-color').trim() || '#3b82f6';
+
+            dots.forEach(dot => {
+                // Calculate wave effect
+                const distanceToWave = Math.abs(dot.distanceFromCenter - waveRadius);
+                const distanceNorm = distanceToWave / waveWidth;
+                const waveFactor = Math.exp(-distanceNorm * distanceNorm * 4);
+
+                // Flicker effect
+                const flickerValue = Math.sin(time * 0.003 * dot.flickerSpeed + dot.flickerPhase);
+                const flickerMultiplier = 0.7 + (flickerValue * 0.3);
+
+                // Calculate opacity
+                const waveOpacity = 0.3 + waveFactor * 0.7;
+                let opacity = dot.baseOpacity * flickerMultiplier;
+                opacity = Math.max(opacity, waveOpacity * 0.8);
+
+                // Calculate size
+                const sizeMultiplier = 1 + waveFactor * 1.5;
+                const finalSize = dot.size * sizeMultiplier;
+
+                // Draw dot
+                ctx.fillStyle = waveFactor > 0.3 ? accentColor : `rgba(255, 255, 255, ${opacity})`;
+                ctx.globalAlpha = opacity;
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, finalSize, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            ctx.globalAlpha = 1;
+        };
+
+        const animate = (timestamp) => {
+            drawDots(timestamp);
+            animationId = requestAnimationFrame(animate);
+        };
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        animate(0);
+    }
+
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mainNav = document.querySelector('.main-nav');
