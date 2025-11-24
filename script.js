@@ -12,20 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // Animate hamburger to X
             const bars = mobileMenuBtn.querySelectorAll('.bar');
             if (mobileMenuBtn.classList.contains('active')) {
-                bars[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+                // Transform to X
+                bars[0].style.transform = 'rotate(45deg) translateY(8px)';
                 bars[1].style.opacity = '0';
-                // We need a 3rd bar for standard hamburger, but I used 2 in CSS. 
-                // Let's adjust logic or CSS. 
-                // Actually, let's keep it simple: toggle class and let CSS handle it if I added styles.
-                // I didn't add specific transform styles for .active in CSS for the bars.
-                // Let's add inline styles for now or rely on a class.
-                // Re-checking CSS: I didn't add .mobile-menu-btn.active .bar styles.
-                // I will add simple inline transforms here for immediate effect.
-                bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                bars[1].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                bars[2].style.transform = 'rotate(-45deg) translateY(-8px)';
             } else {
+                // Back to hamburger
                 bars[0].style.transform = 'none';
-                bars[1].style.transform = 'none';
+                bars[1].style.opacity = '1';
+                bars[2].style.transform = 'none';
             }
         });
     }
@@ -38,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuBtn.classList.remove('active');
                 const bars = mobileMenuBtn.querySelectorAll('.bar');
                 bars[0].style.transform = 'none';
-                bars[1].style.transform = 'none';
+                bars[1].style.opacity = '1';
+                bars[2].style.transform = 'none';
             }
         });
     });
