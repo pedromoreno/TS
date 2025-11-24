@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bodas de Plata: Servando y Paqui | Tarantula Studio</title>
+    <meta name="description"
+        content="Reportaje de Bodas de Plata de Servando y Paqui. 25 años de amor y compañerismo capturados en imágenes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Project Specific Styles */
+        .project-hero {
+            padding: 120px 0 60px;
+            background-color: var(--bg-secondary);
+            text-align: center;
+        }
+
+        .project-content {
+            max-width: 1000px;
+            /* Wider for collage */
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .project-content p.lead {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 60px;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Collage Grid */
+        .collage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .collage-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .collage-item:hover {
+            transform: scale(1.02);
+            z-index: 2;
+        }
+
+        .collage-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Make some items span differently for visual interest if desired, 
+           but a clean grid is safer for random aspect ratios unless we know them.
+           Let's stick to a clean responsive grid for now. */
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo-white.png" alt="Tarantula Studio Logo" id="site-logo">
+                Tarantula Studio
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="index.html#fotografia" class="nav-link">Fotografía</a></li>
+                    <li><a href="index.html#desarrollo" class="nav-link">Desarrollo</a></li>
+                    <li><a href="index.html#proyectos" class="nav-link">Proyectos</a></li>
+                    <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="project-hero">
+            <div class="container">
+                <h1 class="hero-title" style="font-size: 3rem;">Bodas de Plata</h1>
+                <p class="hero-subtitle" style="margin: 0 auto 48px auto; text-align: center;">Servando y Paqui: 25 años
+                    de amor</p>
+            </div>
+        </section>
+
+        <article class="project-content">
+            <p class="lead">Celebrando 25 años de amor y compañerismo. Un reportaje íntimo y emotivo que captura la
+                esencia de Servando y Paqui en sus Bodas de Plata, rodeados de recuerdos y mirando hacia el futuro con
+                la misma ilusión del primer día.</p>
+
+            <div class="collage-grid">
+                <div class="collage-item">
+                    <img src="assets/boda-1.jpg" alt="Servando y Paqui Boda de Plata 1" class="collage-img">
+                </div>
+                <div class="collage-item">
+                    <img src="assets/boda-2.jpg" alt="Servando y Paqui Boda de Plata 2" class="collage-img">
+                </div>
+                <div class="collage-item">
+                    <img src="assets/boda-3.jpg" alt="Servando y Paqui Boda de Plata 3" class="collage-img">
+                </div>
+                <div class="collage-item">
+                    <img src="assets/boda-4.jpg" alt="Servando y Paqui Boda de Plata 4" class="collage-img">
+                </div>
+                <div class="collage-item">
+                    <img src="assets/boda-5.jpg" alt="Servando y Paqui Boda de Plata 5" class="collage-img">
+                </div>
+            </div>
+
+            <div class="back-btn-container" style="text-align: center; margin-top: 60px;">
+                <a href="index.html#proyectos" class="btn btn-primary">Volver a Proyectos</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 Tarantula Studio. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="LinkedIn">IN</a>
+                <a href="#" aria-label="Twitter">TW</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

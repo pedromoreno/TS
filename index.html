@@ -27,9 +27,10 @@
             </button>
             <nav class="main-nav">
                 <ul class="nav-list">
-                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-                    <li><a href="#fotografia" class="nav-link">Fotografía</a></li>
+                    <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="index.html#fotografia" class="nav-link">Fotografía</a></li>
                     <li><a href="#desarrollo" class="nav-link">Desarrollo</a></li>
+                    <li><a href="index.html#proyectos" class="nav-link">Proyectos</a></li>
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                     <li>
                         <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
@@ -134,6 +135,34 @@
             </div>
         </section>
 
+        <section id="proyectos" class="section projects-section">
+            <div class="container">
+                <h2 class="section-title">Últimos Proyectos</h2>
+                <p class="section-description">Explora mis trabajos más recientes en fotografía y desarrollo.</p>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <div class="project-date">02 Nov 2025</div>
+                        <h3 class="project-title">Bodas de Plata: Servando y Paqui</h3>
+                        <p class="project-excerpt">25 años de historia. Un reportaje lleno de emoción y recuerdos.</p>
+                        <a href="project-bodas-plata.html" class="project-link">Leer más &rarr;</a>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-date">15 Nov 2025</div>
+                        <h3 class="project-title">Automatización Mundopan</h3>
+                        <p class="project-excerpt">App web con impresión de tickets en tiempo real para optimizar
+                            pedidos.</p>
+                        <a href="project-mundopan.html" class="project-link">Leer más &rarr;</a>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-date">24 Nov 2025</div>
+                        <h3 class="project-title">3D Shop Jerez</h3>
+                        <p class="project-excerpt">Una tienda online que combina presencia local y alcance digital.</p>
+                        <a href="project-3d-shop.html" class="project-link">Leer más &rarr;</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section id="contacto" class="section contact-section">
             <div class="container">
                 <h2 class="section-title">Contacto</h2>
@@ -148,7 +177,7 @@
                     </a>
                 </div>
 
-                <form class="contact-form">
+                <form class="contact-form" action="mailto:ppmoreno@gmail.com" method="post" enctype="text/plain">
                     <div class="form-group">
                         <label for="name">Nombre</label>
                         <input type="text" id="name" name="name" required>

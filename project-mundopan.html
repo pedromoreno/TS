@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatización Mundopan | Tarantula Studio</title>
+    <meta name="description"
+        content="Caso de estudio: App web con impresión de tickets en tiempo real para optimizar pedidos en una panadería.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Project Specific Styles */
+        .project-hero {
+            padding: 120px 0 60px;
+            background-color: var(--bg-secondary);
+            text-align: center;
+        }
+
+        .project-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .project-content h2 {
+            font-size: 2rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .project-content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .project-content li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .back-btn-container {
+            text-align: center;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo-white.png" alt="Tarantula Studio Logo" id="site-logo">
+                Tarantula Studio
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="index.html#fotografia" class="nav-link">Fotografía</a></li>
+                    <li><a href="index.html#desarrollo" class="nav-link">Desarrollo</a></li>
+                    <li><a href="index.html#proyectos" class="nav-link">Proyectos</a></li>
+                    <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="project-hero">
+            <div class="container">
+                <h1 class="hero-title" style="font-size: 3rem;">Automatización Mundopan</h1>
+                <p class="hero-subtitle" style="text-align: center;">App web con impresión de tickets en tiempo real</p>
+            </div>
+        </section>
+
+        <article class="project-content">
+            <p class="lead">Uno de nuestros proyectos recientes ha sido el desarrollo de una aplicación web para una
+                panadería, diseñada para optimizar su flujo de pedidos e integrar la impresión automática de tickets en
+                el punto de venta.</p>
+
+            <h2>El desafío</h2>
+            <p>La panadería necesitaba un sistema ágil para gestionar pedidos online y que estos se imprimieran de forma
+                inmediata en la impresora del mostrador, sin intervención manual. El objetivo era claro: evitar
+                retrasos, reducir errores y mantener el ritmo de trabajo durante las horas punta.</p>
+            <p>El principal reto técnico surgió con la impresión automática desde el navegador, una tarea que los
+                navegadores modernos restringen por seguridad. Esto me llevó a desarrollar una solución híbrida,
+                combinando una app web conectada a Supabase (base de datos y backend en tiempo real) con un script local
+                en Node.js encargado de escuchar los nuevos pedidos e imprimirlos directamente en la impresora térmica
+                POS.</p>
+
+            <h2>La solución técnica</h2>
+            <p>El sistema completo se compone de tres partes:</p>
+
+            <h3>1. Frontend web (panel de pedidos):</h3>
+            <p>Una interfaz sencilla y visual donde el personal puede ver los pedidos entrantes en tiempo real.</p>
+
+            <h3>2. Base de datos y backend con Supabase:</h3>
+            <p>Gestiona los pedidos y dispara eventos en tiempo real cada vez que se crea un nuevo registro en la tabla
+                orders.</p>
+
+            <h3>3. Script de impresión automática (Node.js):</h3>
+            <p>Un proceso local que escucha los cambios en Supabase y envía el ticket directamente a la impresora
+                térmica (modelo POS-58). El script se mantiene en ejecución continua y puede reiniciarse automáticamente
+                en caso de error, garantizando estabilidad incluso en entornos sin supervisión técnica.</p>
+
+            <h2>Resultado</h2>
+            <p>El sistema consigue que cada nuevo pedido se imprima al instante, con los datos del cliente, los
+                productos seleccionados y la hora del pedido. Todo sin necesidad de refrescar páginas ni tocar un solo
+                botón.</p>
+            <p>La panadería ha logrado reducir el tiempo de atención, mejorar la organización y mantener una
+                trazabilidad clara de cada pedido.</p>
+
+            <h2>Lo que aprendí</h2>
+            <p>Este proyecto me permitió profundizar en temas como:</p>
+            <ul>
+                <li>Conexiones realtime con Supabase</li>
+                <li>Integración entre backend remoto y servicios locales</li>
+                <li>Manejo de impresoras térmicas mediante Node.js</li>
+                <li>Estrategias de reconexión y persistencia de procesos</li>
+            </ul>
+            <p>Más allá del aspecto técnico, fue una experiencia muy gratificante ver cómo una solución sencilla puede
+                tener un impacto directo y visible en un negocio local.</p>
+
+            <div class="back-btn-container">
+                <a href="index.html#proyectos" class="btn btn-primary">Volver a Proyectos</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 Tarantula Studio. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">IG</a>
+                <a href="#" aria-label="LinkedIn">IN</a>
+                <a href="#" aria-label="Twitter">TW</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
