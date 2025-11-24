@@ -115,6 +115,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to apply theme
     const applyTheme = (theme) => {
         document.documentElement.setAttribute('data-theme', theme);
+
+        // Update theme-color meta tag for mobile browsers
+        let themeColorMeta = document.querySelector('meta[name="theme-color"]:not([media])');
+        if (!themeColorMeta) {
+            themeColorMeta = document.createElement('meta');
+            themeColorMeta.name = 'theme-color';
+            document.head.appendChild(themeColorMeta);
+        }
+        themeColorMeta.content = theme === 'light' ? '#ffffff' : '#050505';
+
         if (theme === 'light') {
             siteLogo.src = 'assets/logo-black.png';
         } else {
