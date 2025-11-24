@@ -170,4 +170,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setState(newState);
     });
+
+    // Decipher Text Animation
+    const decipherText = document.getElementById('decipher-text');
+    if (decipherText) {
+        const originalText = decipherText.textContent;
+        const charset = ['X', '$', '@', 'a', 'H', 'z', 'o', '0', 'y', '#', '?', '*', '0', '1', '+'];
+
+        const getRandomChar = () => charset[Math.floor(Math.random() * charset.length)];
+
+        const generateRandomText = (text) => {
+            return text.split('').map(char => char === ' ' ? ' ' : getRandomChar()).join('');
+        };
+
+        const animateDecipher = async () => {
+            const INITIAL_DURATION = 400; // Duration of random scrambling
+            const REVEAL_DELAY = 40; // Delay between revealing each character
+
+            // Initial scrambling phase
+            let randomText = generateRandomText(originalText);
+            const endTime = Date.now() + INITIAL_DURATION;
+
+            while (Date.now() < endTime) {
+                decipherText.textContent = randomText;
+                await new Promise(resolve => setTimeout(resolve, 30));
+                randomText = generateRandomText(originalText);
+            }
+
+            // Reveal phase - one character at a time
+            for (let i = 0; i < originalText.length; i++) {
+                await new Promise(resolve => setTimeout(resolve, REVEAL_DELAY));
+                decipherText.textContent = originalText.substring(0, i + 1) + randomText.substring(i + 1);
+            }
+
+            // Ensure final text is correct
+            decipherText.textContent = originalText;
+        };
+
+        // Start animation after a short delay
+        setTimeout(() => {
+            animateDecipher();
+        }, 500);
+    }
 });
