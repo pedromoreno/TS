@@ -184,13 +184,20 @@ document.addEventListener('DOMContentLoaded', () => {
             'assets/gallery/boda/boda-2.jpg',
             'assets/gallery/boda/boda-3.jpg',
             'assets/gallery/boda/boda-4.jpg',
-            'assets/gallery/boda/boda-5.jpg'
+            'assets/gallery/boda/boda-5.jpg',
+            'assets/gallery/boda/boda-6.jpg',
+            'assets/gallery/boda/boda-7.jpg',
+            'assets/gallery/boda/boda-8.jpg',
+            'assets/gallery/boda/boda-9.jpg',
+            'assets/gallery/boda/boda-10.jpg'
         ],
         comunion: [],
         eventos: [],
         casual: [],
         callejera: []
     };
+
+    console.log('Gallery system initialized', galleryData);
 
     const galleryItems = document.querySelectorAll('.gallery-item');
     const galleryModal = document.getElementById('gallery-modal');
@@ -201,6 +208,10 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('click', () => {
             const category = item.dataset.category;
             const images = galleryData[category];
+
+            console.log('Gallery item clicked:', category);
+            console.log('Images found:', images);
+            console.log('Modal element:', galleryModal);
 
             if (images && images.length > 0) {
                 // Clear previous images
@@ -218,6 +229,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Show modal
                 galleryModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                console.log('Modal opened');
+            } else {
+                console.log('No images for category:', category);
             }
         });
     });
