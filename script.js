@@ -177,6 +177,68 @@ document.addEventListener('DOMContentLoaded', () => {
         setState(newState);
     });
 
+    // Category-Based Gallery System
+    const galleryData = {
+        boda: [
+            'assets/gallery/boda/boda-1.jpg',
+            'assets/gallery/boda/boda-2.jpg',
+            'assets/gallery/boda/boda-3.jpg',
+            'assets/gallery/boda/boda-4.jpg',
+            'assets/gallery/boda/boda-5.jpg'
+        ],
+        comunion: [],
+        eventos: [],
+        casual: [],
+        callejera: []
+    };
+
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const galleryModal = document.getElementById('gallery-modal');
+    const galleryImagesContainer = document.getElementById('gallery-images');
+    const closeGalleryBtn = document.getElementById('close-gallery');
+
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const category = item.dataset.category;
+            const images = galleryData[category];
+
+            if (images && images.length > 0) {
+                // Clear previous images
+                galleryImagesContainer.innerHTML = '';
+
+                // Add images to modal
+                images.forEach(imageSrc => {
+                    const img = document.createElement('img');
+                    img.src = imageSrc;
+                    img.alt = `${category} photo`;
+                    img.className = 'gallery-modal-img';
+                    galleryImagesContainer.appendChild(img);
+                });
+
+                // Show modal
+                galleryModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    if (closeGalleryBtn) {
+        closeGalleryBtn.addEventListener('click', () => {
+            galleryModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Close on background click
+    if (galleryModal) {
+        galleryModal.addEventListener('click', (e) => {
+            if (e.target === galleryModal) {
+                galleryModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
     // Decipher Text Animation
     const decipherText = document.getElementById('decipher-text');
     if (decipherText) {
@@ -190,10 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const animateDecipher = async () => {
-            const INITIAL_DURATION = 400; // Duration of random scrambling
-            const REVEAL_DELAY = 40; // Delay between revealing each character
+            const INITIAL_DURATION = 400;
+            const REVEAL_DELAY = 40;
 
-            // Initial scrambling phase
             let randomText = generateRandomText(originalText);
             const endTime = Date.now() + INITIAL_DURATION;
 
@@ -203,17 +264,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 randomText = generateRandomText(originalText);
             }
 
-            // Reveal phase - one character at a time
             for (let i = 0; i < originalText.length; i++) {
                 await new Promise(resolve => setTimeout(resolve, REVEAL_DELAY));
                 decipherText.textContent = originalText.substring(0, i + 1) + randomText.substring(i + 1);
             }
 
-            // Ensure final text is correct
             decipherText.textContent = originalText;
         };
 
-        // Start animation after a short delay
         setTimeout(() => {
             animateDecipher();
         }, 500);
