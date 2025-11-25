@@ -304,14 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     img.alt = `${category} photo`;
                     img.className = 'gallery-modal-img';
 
-                    // Calculate grid row span based on image aspect ratio
-                    img.onload = function () {
-                        const aspectRatio = this.naturalHeight / this.naturalWidth;
-                        // Base height is 280px (minmax value), each row is 20px
-                        const baseSpan = 15; // ~300px / 20px
-                        const rowSpan = Math.ceil(baseSpan * aspectRatio);
-                        this.style.gridRowEnd = `span ${rowSpan}`;
-                    };
+                    // No JS layout calculation needed for CSS Columns
 
                     galleryImagesContainer.appendChild(img);
                 });
